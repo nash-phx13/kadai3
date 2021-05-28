@@ -1,5 +1,7 @@
+
 <% if @book.errors.any? %>
-  <h3>error:<%= @book.errors.count %>件のエラーが発生しました</h3>
+  <h3>error:<%= @book.errors.count %>error prohibited this obj from being saved:
+  </h3>
   <br>
     <% @book.errors.full_messages.each do |message| %>
     <%= message %>
@@ -7,13 +9,21 @@
   </br>
 <% end %>
 
+<div class="container">  <!-- この行を追加 -->
+ <div class="row">      <!-- この行を追加 -->
+  <div class="mx-auto">
+  <tbody>
 <h1>Editing Book</h1>
 <%= form_with model:@book,local:true do |f| %>
   <h4>Title</h4>
   <%= f.text_field :title %>
   <h4>Opinion</h4>
-  <%= f.text_area :opinion %>
+  <%= f.text_area :body %>
   <%= f.submit  %>
-  <%= link_to "Show", user_path %>
+  <%= link_to "Show", book_path %>
   <%= link_to "Back", books_path %>
 <% end %>
+ </tbody>
+  </div>
+ </div>
+</div><!-- container -->
